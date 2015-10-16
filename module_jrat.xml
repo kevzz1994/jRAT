@@ -8,8 +8,8 @@
   
   <property name="compiler.args.jrat" value="-encoding windows-1252 -source 8 ${compiler.args}"/>
   
-  <property name="jrat.output.dir" value="${module.jrat.basedir}/out/production/jRAT"/>
-  <property name="jrat.testoutput.dir" value="${module.jrat.basedir}/out/test/jRAT"/>
+  <property name="jrat.output.dir" value="${module.jrat.basedir}/bin/production/jRAT"/>
+  <property name="jrat.testoutput.dir" value="${module.jrat.basedir}/bin/test/jRAT"/>
   
   <path id="jrat.module.bootclasspath">
     <!-- Paths to be included in compilation bootclasspath -->
@@ -51,15 +51,15 @@
   
   <target name="compile.module.jrat" depends="compile.module.jrat.production,compile.module.jrat.tests" description="Compile module jRAT"/>
   
-  <target name="compile.module.jrat.production" depends="register.custom.compilers" description="Compile module jRAT; production classes">
+  <target name="compile.module.jrat.production" description="Compile module jRAT; production classes">
     <mkdir dir="${jrat.output.dir}"/>
-    <javac2 destdir="${jrat.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.jrat}/javac">
+    <javac destdir="${jrat.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.jrat}/javac">
       <compilerarg line="${compiler.args.jrat}"/>
       <bootclasspath refid="jrat.module.bootclasspath"/>
       <classpath refid="jrat.module.production.classpath"/>
       <src refid="jrat.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.jrat"/>
-    </javac2>
+    </javac>
     
     <copy todir="${jrat.output.dir}">
       <fileset dir="${module.jrat.basedir}/src">
@@ -69,7 +69,7 @@
     </copy>
   </target>
   
-  <target name="compile.module.jrat.tests" depends="register.custom.compilers,compile.module.jrat.production" description="compile module jRAT; test classes" unless="skip.tests"/>
+  <target name="compile.module.jrat.tests" depends="compile.module.jrat.production" description="compile module jRAT; test classes" unless="skip.tests"/>
   
   <target name="clean.module.jrat" description="cleanup module">
     <delete dir="${jrat.output.dir}"/>
