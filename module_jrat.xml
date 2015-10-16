@@ -2,9 +2,6 @@
 <project name="module_jrat" default="compile.module.jrat">
   <dirname property="module.jrat.basedir" file="${ant.file.module_jrat}"/>
   
-  <property name="module.jdk.home.jrat" value="${project.jdk.home}"/>
-  <property name="module.jdk.bin.jrat" value="${project.jdk.bin}"/>
-  <property name="module.jdk.classpath.jrat" value="${project.jdk.classpath}"/>
   
   <property name="compiler.args.jrat" value="-encoding windows-1252 -source 8 ${compiler.args}"/>
   
@@ -15,16 +12,13 @@
     <!-- Paths to be included in compilation bootclasspath -->
   </path>
   
-  <path id="jrat.module.production.classpath">
-    <path refid="${module.jdk.classpath.jrat}"/>
-  </path>
+  <path id="jrat.module.production.classpath"/>
   
   <path id="jrat.runtime.production.module.classpath">
     <pathelement location="${jrat.output.dir}"/>
   </path>
   
   <path id="jrat.module.classpath">
-    <path refid="${module.jdk.classpath.jrat}"/>
     <pathelement location="${jrat.output.dir}"/>
   </path>
   
@@ -53,7 +47,7 @@
   
   <target name="compile.module.jrat.production" description="Compile module jRAT; production classes">
     <mkdir dir="${jrat.output.dir}"/>
-    <javac destdir="${jrat.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.jrat}/javac">
+    <javac destdir="${jrat.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.jrat}"/>
       <bootclasspath refid="jrat.module.bootclasspath"/>
       <classpath refid="jrat.module.production.classpath"/>
