@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="jrat" default="all">
+<project name="jrat" default="test">
   
   
   <property file="jrat.properties"/>
@@ -116,5 +116,5 @@
   
   <target name="build.modules" depends="init, clean, compile.module.jrat" description="build all modules"/>
   
-  <target name="all" depends="build.modules" description="build all"/>
+  <target name="test" depends="build.modules" description="build all"/>
 </project>
