@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_jrat" default="compile.module.jrat">
+  <dirname property="module.jrat.basedir" file="${ant.file.module_jrat}"/>
+  
+  <property name="module.jdk.home.jrat" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.jrat" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.jrat" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.jrat" value="-encoding windows-1252 -source 8 ${compiler.args}"/>
+  
+  <property name="jrat.output.dir" value="${module.jrat.basedir}/out/production/jRAT"/>
+  <property name="jrat.testoutput.dir" value="${module.jrat.basedir}/out/test/jRAT"/>
+  
+  <path id="jrat.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="jrat.module.production.classpath">
+    <path refid="${module.jdk.classpath.jrat}"/>
+  </path>
+  
+  <path id="jrat.runtime.production.module.classpath">
+    <pathelement location="${jrat.output.dir}"/>
+  </path>
+  
+  <path id="jrat.module.classpath">
+    <path refid="${module.jdk.classpath.jrat}"/>
+    <pathelement location="${jrat.output.dir}"/>
+  </path>
+  
+  <path id="jrat.runtime.module.classpath">
+    <pathelement location="${jrat.testoutput.dir}"/>
+    <pathelement location="${jrat.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.jrat">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.jrat">
+    <patternset refid="excluded.from.module.jrat"/>
+  </patternset>
+  
+  <path id="jrat.module.sourcepath">
+    <dirset dir="${module.jrat.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.jrat" depends="compile.module.jrat.production,compile.module.jrat.tests" description="Compile module jRAT"/>
+  
+  <target name="compile.module.jrat.production" depends="register.custom.compilers" description="Compile module jRAT; production classes">
+    <mkdir dir="${jrat.output.dir}"/>
+    <javac2 destdir="${jrat.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.jrat}/javac">
+      <compilerarg line="${compiler.args.jrat}"/>
+      <bootclasspath refid="jrat.module.bootclasspath"/>
+      <classpath refid="jrat.module.production.classpath"/>
+      <src refid="jrat.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.jrat"/>
+    </javac2>
+    
+    <copy todir="${jrat.output.dir}">
+      <fileset dir="${module.jrat.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.jrat.tests" depends="register.custom.compilers,compile.module.jrat.production" description="compile module jRAT; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.jrat" description="cleanup module">
+    <delete dir="${jrat.output.dir}"/>
+    <delete dir="${jrat.testoutput.dir}"/>
+  </target>
+</project>
