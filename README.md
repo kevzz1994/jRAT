@@ -12,3 +12,9 @@ Remote Administration Tool written in Java
 Download the project and execute the following:
 
 ```java -jar <directory of file>.jar```
+
+## TODO
+
+- [ ] Finish UI
+- [ ] Server / Client Protocol
+- [ ] So many things.. QQ
