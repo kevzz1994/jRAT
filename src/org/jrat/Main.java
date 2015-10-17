@@ -5,9 +5,9 @@ import org.jrat.ui.Frame;
 /**
  * Created by Kevin on 16-10-2015.
  */
-public class Main {
+public final class Main {
 
-    private double version = 0.01;
+    private final double version = 0.01;
 
     public static void main(final String... args) {
         new Main();
@@ -16,7 +16,8 @@ public class Main {
     public Main() {
         System.out.println("Initializing: jRat...");
         System.out.println("Current version: " + version);
-        new Frame(this);
+        final Frame frame = new Frame(this);
+        frame.setVisible(true);
     }
 
     /**
