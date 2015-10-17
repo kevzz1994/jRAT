@@ -18,6 +18,7 @@ public final class Frame extends JFrame {
     public Frame(final Main main) {
         super(String.format("jRAT v%s by Kevin Schaap [Active connections: %s]",
                 main.getVersion(), 0));
+        setLookAndFeel();
         setLayout(new BorderLayout());
 
         add(toolBar = new ToolBar(), BorderLayout.NORTH);
@@ -28,5 +29,14 @@ public final class Frame extends JFrame {
         setMinimumSize(getPreferredSize());
         pack();
         setLocationRelativeTo(null);
+    }
+
+    private void setLookAndFeel() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException |
+                IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
     }
 }
