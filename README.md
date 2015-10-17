@@ -2,19 +2,10 @@
 
 Remote Administration Tool written in Java
 
-## Requirements
-
-* Java 6.0+ installed
-* ..
-
-## Installation
-
-Download the project and execute the following:
-
-```java -jar <directory of file>.jar```
-
 ## TODO
 
 - [ ] Finish UI
-- [ ] Server / Client Protocol
-- [ ] So many things.. QQ
+- [ ] Server Protocol
+- [ ] Client Protocol
+- [ ] Authentication
+- [ ] And many things more.. QQ
