@@ -1,7 +1,9 @@
 package org.jrat.ui;
 
 import org.jrat.Main;
+import org.jrat.ui.impl.Helper;
 import org.jrat.ui.tabs.Home;
+import org.pushingpixels.substance.api.skin.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +26,8 @@ public final class Frame extends JFrame {
         add(toolBar = new ToolBar(), BorderLayout.NORTH);
         add(pane = new TabbedPane(home = new Home()), BorderLayout.CENTER);
 
+        assert Helper.getImage("logo.png") != null;
+        setIconImage(Helper.getImage("logo.png"));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(875, 450));
         setMinimumSize(getPreferredSize());
@@ -33,12 +37,12 @@ public final class Frame extends JFrame {
 
     private void setLookAndFeel() {
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(new SubstanceNebulaBrickWallLookAndFeel()); //SubstanceGraphiteLookAndFeel()
+            SwingUtilities.updateComponentTreeUI(this);
             JFrame.setDefaultLookAndFeelDecorated(true);
             JPopupMenu.setDefaultLightWeightPopupEnabled(false);
             ToolTipManager.sharedInstance().setLightWeightPopupEnabled(false);
-        } catch (ClassNotFoundException | InstantiationException |
-                IllegalAccessException | UnsupportedLookAndFeelException e) {
+        } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
     }

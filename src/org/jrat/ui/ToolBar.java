@@ -14,6 +14,11 @@ public class ToolBar extends JMenuBar {
 
     private void init() {
         final JMenu file = new JMenu("File");
+        final JMenuItem exit = new JMenuItem("Exit");
+
+        exit.addActionListener(e -> System.exit(0));
+
+        file.add(exit);
         add(file);
 
         final JMenu edit = new JMenu("Edit");

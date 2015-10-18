@@ -2,6 +2,8 @@ package org.jrat;
 
 import org.jrat.ui.Frame;
 
+import javax.swing.*;
+
 /**
  * Created by Kevin on 16-10-2015.
  */
@@ -16,8 +18,10 @@ public final class Main {
     public Main() {
         System.out.println("Initializing: jRat...");
         System.out.println("Current version: " + version);
-        final Frame frame = new Frame(this);
-        frame.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            final Frame frame = new Frame(this);
+            frame.setVisible(true);
+        });
     }
 
     /**
