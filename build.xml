@@ -57,6 +57,16 @@
     <exclude name="**/?*.aj"/>
   </patternset>
   
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.laf-plugin-7.3.classpath">
+    <pathelement location="${basedir}/libs/laf-plugin-7.3.jar"/>
+    <pathelement location="${basedir}/libs/laf-widget-7.3.jar"/>
+    <pathelement location="${basedir}/libs/substance-7.3.jar"/>
+    <pathelement location="${basedir}/libs/trident-7.3.jar"/>
+  </path>
+  
   <!-- Modules -->
   
   <import file="${basedir}/module_jrat.xml"/>

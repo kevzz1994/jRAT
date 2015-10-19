@@ -12,19 +12,24 @@
     <!-- Paths to be included in compilation bootclasspath -->
   </path>
   
-  <path id="jrat.module.production.classpath"/>
+  <path id="jrat.module.production.classpath">
+    <path refid="library.laf-plugin-7.3.classpath"/>
+  </path>
   
   <path id="jrat.runtime.production.module.classpath">
     <pathelement location="${jrat.output.dir}"/>
+    <path refid="library.laf-plugin-7.3.classpath"/>
   </path>
   
   <path id="jrat.module.classpath">
     <pathelement location="${jrat.output.dir}"/>
+    <path refid="library.laf-plugin-7.3.classpath"/>
   </path>
   
   <path id="jrat.runtime.module.classpath">
     <pathelement location="${jrat.testoutput.dir}"/>
     <pathelement location="${jrat.output.dir}"/>
+    <path refid="library.laf-plugin-7.3.classpath"/>
   </path>
   
   
