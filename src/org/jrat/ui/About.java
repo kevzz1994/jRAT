@@ -17,17 +17,8 @@ public final class About extends JDialog {
         setTitle("About jRAT");
         setLayout(new BorderLayout());
         final JTextArea area = new JTextArea();
-        area.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n" +
-                "Duis quis est ac ante auctor convallis. \n" +
-                "Cras sed aliquam neque. \n" +
-                "Aenean vel nisi purus. \n" +
-                "Etiam et augue vitae purus porta posuere vel quis nibh. \n" +
-                "Integer interdum pretium nibh, sed commodo odio. \n" +
-                "Integer accumsan lobortis mi eget lobortis. \n" +
-                "Pellentesque tincidunt est felis, non vulputate sem suscipit et. \n" +
-                "Cras molestie non tortor dictum ultrices. \n" +
-                "Sed convallis nulla sit amet facilisis aliquet. \n" +
-                "Mauris ultricies nisl in ante lacinia auctor.");
+        area.setText("jRAT is a cross-platform Remote Administration Tool with a focus on " +
+                "controlling and monitoring.");
         area.setEditable(false);
         add(new JScrollPane(area), BorderLayout.CENTER);
         setPreferredSize(new Dimension(420, 225));

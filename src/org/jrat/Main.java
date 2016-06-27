@@ -1,6 +1,7 @@
 package org.jrat;
 
 import org.jrat.ui.Frame;
+import org.jrat.util.Constants;
 
 import javax.swing.*;
 
@@ -9,15 +10,13 @@ import javax.swing.*;
  */
 public final class Main {
 
-    private final double version = 0.01;
-
     public static void main(final String... args) {
         new Main();
     }
 
     public Main() {
         System.out.println("Initializing: jRat...");
-        System.out.println("Current version: " + version);
+        System.out.println("Current version: " + getVersion());
         SwingUtilities.invokeLater(() -> {
             final Frame frame = new Frame(this);
             frame.setVisible(true);
@@ -30,6 +29,6 @@ public final class Main {
      */
 
     public double getVersion() {
-        return version;
+        return Constants.VERSION;
     }
 }

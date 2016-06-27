@@ -1,4 +1,4 @@
-package org.jrat.ui.impl;
+package org.jrat.util;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

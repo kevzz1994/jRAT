@@ -1,7 +1,7 @@
 package org.jrat.ui;
 
 import org.jrat.Main;
-import org.jrat.ui.impl.Helper;
+import org.jrat.util.Helper;
 import org.jrat.ui.tabs.Home;
 import org.pushingpixels.substance.api.skin.*;
 
@@ -31,6 +31,8 @@ public final class Frame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(875, 450));
         setMinimumSize(getPreferredSize());
+        setResizable(false);
+
         pack();
         setLocationRelativeTo(null);
     }
